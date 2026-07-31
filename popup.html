@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vet Capture</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="mark">V</div>
+    <div>
+      <h1>Vet Capture</h1>
+      <p class="subtitle">Tag it, queue it, use it later.</p>
+    </div>
+  </header>
+
+  <section id="pending-section" class="section hidden">
+    <h2 class="section-title">Needs tagging</h2>
+    <ul id="pending-list" class="capture-list"></ul>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title" id="form-title">New capture</h2>
+    <form id="capture-form">
+      <label class="field">
+        <span>Text</span>
+        <textarea id="content-text" rows="4" placeholder="Paste patient info here, or select text on the page and reopen this popup"></textarea>
+      </label>
+
+      <label class="field file-field">
+        <span>Add one or more files too, if needed (image, video, PDF, Word, Pages, text — any type; optional, can be used together with the text above)</span>
+        <input type="file" id="content-image" multiple />
+      </label>
+      <div id="file-preview" class="file-list hidden"></div>
+
+      <div class="field-row">
+        <label class="field">
+          <span>Patient first name</span>
+          <input type="text" id="patient-first" />
+        </label>
+        <label class="field">
+          <span>Patient last name</span>
+          <input type="text" id="patient-last" />
+        </label>
+      </div>
+
+      <label class="field">
+        <span>Doctor (previously used)</span>
+        <select id="doctor-history-select">
+          <option value="">— New doctor —</option>
+        </select>
+      </label>
+      <div class="field-row">
+        <label class="field">
+          <span>Doctor first name</span>
+          <input type="text" id="doctor-first" />
+        </label>
+        <label class="field">
+          <span>Doctor last name</span>
+          <input type="text" id="doctor-last" />
+        </label>
+      </div>
+      <div class="default-doctor-row">
+        <button type="button" id="set-default-doctor-btn" class="link-btn">Set as default doctor</button>
+        <span id="default-doctor-label" class="default-doctor-label"></span>
+        <button type="button" id="clear-default-doctor-btn" class="link-btn hidden">Clear default</button>
+      </div>
+
+      <div class="field-row">
+        <label class="field">
+          <span>Date</span>
+          <input type="date" id="capture-date" />
+        </label>
+        <label class="field">
+          <span>Intended use</span>
+          <select id="intended-use">
+            <option value="" disabled selected>Choose one…</option>
+            <option value="referral_letter">Referral letter</option>
+            <option value="soap_record">SOAP-style exam record</option>
+            <option value="lab_history">Reference lab history</option>
+            <option value="radiology_review">Radiology review</option>
+            <option value="other">Other</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="actions">
+        <button type="button" id="clear-form-btn" class="btn-secondary">Clear</button>
+        <button type="submit" id="save-btn" class="btn-primary">Save capture</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Captured <span id="captured-count" class="count"></span></h2>
+    <ul id="captured-list" class="capture-list"></ul>
+    <p id="empty-state" class="empty-state hidden">Nothing captured yet. Paste, upload, or select text on a page and use the right-click menu.</p>
+  </section>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
