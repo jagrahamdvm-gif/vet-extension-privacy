@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vet Patient Capture — Privacy Policy</title>
+</head>
+<body>
+<h1>Vet Patient Capture — Privacy Policy</h1>
+<p><em>Last updated: July 31, 2026</em></p>
+
+<h2>What this extension does</h2>
+<p>Vet Patient Capture lets a veterinary clinician manually capture text, images, or
+other files from web pages they are actively viewing (such as browser-based scribe
+apps or practice management software), tag that captured material with patient name,
+doctor name, date, and intended use, and hold it locally for the clinician's own
+later use — including optionally handing it off to a Claude AI chat session that
+the clinician opens themselves.</p>
+
+<h2>What data is collected</h2>
+<p>The extension only captures data the user explicitly provides, through one of
+these actions:</p>
+<ul>
+<li>Text the user selects on a web page and either right-clicks to capture, or that
+is present on the page when the user opens the extension popup</li>
+<li>Text the user types or pastes directly into the extension's popup</li>
+<li>A file (image, PDF, document, or other file type) the user explicitly chooses
+to upload through the popup's file picker</li>
+<li>Metadata the user types into the tagging form: patient first/last name, doctor
+first/last name, date, and intended use</li>
+</ul>
+<p>The extension does not passively monitor, log, or transmit browsing activity. It
+only acts on a page when the user actively triggers a capture (right-click menu,
+opening the popup, or pasting/uploading content into it).</p>
+
+<h2>Where data is stored</h2>
+<p>All captured data is stored locally on the user's own device, using the
+browser's built-in <code>chrome.storage.local</code> API. Nothing is sent to any
+server operated by the extension's developer. The developer has no access to,
+and does not receive a copy of, any captured data.</p>
+
+<h2>How data may leave the device</h2>
+<p>Data only leaves the local browser storage when the user takes one of these
+explicit actions:</p>
+<ul>
+<li><strong>Copy:</strong> the user clicks "Copy," which copies text to the
+system clipboard using the standard browser clipboard API.</li>
+<li><strong>Download:</strong> the user clicks "Download," which saves an
+uploaded file back to the user's own device using the browser's file download
+mechanism.</li>
+<li><strong>Send → Desktop:</strong> the user clicks this action, which opens
+the Claude Desktop application (if installed) via a <code>claude://</code> deep
+link, with a text prompt pre-filled. This hands the data to Claude Desktop, an
+Anthropic product the user has separately chosen to install and use, and which
+has its own privacy policy.</li>
+<li><strong>Send → Browser:</strong> the user clicks this action, which copies
+a text prompt to the clipboard and opens a new tab to claude.ai. The user must
+manually paste and send the content themselves; the extension does not
+transmit anything automatically. claude.ai is an Anthropic product with its own
+privacy policy.</li>
+</ul>
+<p>In all cases, sending data to Claude Desktop or claude.ai is a deliberate,
+one-at-a-time action taken by the user, not something the extension does
+automatically or in the background.</p>
+
+<h2>Permissions used</h2>
+<ul>
+<li><strong>storage / unlimitedStorage:</strong> to save captured items locally
+on the user's device so they persist between browser sessions.</li>
+<li><strong>contextMenus:</strong> to add the "Capture selection to Vet
+Extension" right-click menu option.</li>
+<li><strong>activeTab:</strong> to read the currently active tab's URL (stored
+alongside a capture for reference) and to open new tabs for the Send actions.</li>
+<li><strong>host permissions (all sites):</strong> the content script that
+detects a page's current text selection must be able to run on any site,
+because the clinician may use this extension on a wide range of veterinary
+software and scribe applications hosted on many different domains, which
+cannot be known or restricted in advance.</li>
+</ul>
+
+<h2>Remote code</h2>
+<p>This extension does not download or execute any remotely hosted code. All
+code that runs is packaged within the extension itself.</p>
+
+<h2>Data retention and deletion</h2>
+<p>Captured data remains in local browser storage until the user deletes it
+using the "Delete" action in the extension, or until the user removes the
+extension or clears their browser's extension storage.</p>
+
+<h2>Contact</h2>
+<p>Questions about this policy can be directed to the developer at the contact
+information provided on this extension's Chrome Web Store listing.</p>
+</body>
+</html>
